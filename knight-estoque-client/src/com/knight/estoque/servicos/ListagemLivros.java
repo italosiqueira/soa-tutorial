@@ -3,6 +3,7 @@ package com.knight.estoque.servicos;
 
 import java.util.List;
 import javax.jws.WebMethod;
+import javax.jws.WebParam;
 import javax.jws.WebResult;
 import javax.jws.WebService;
 import javax.xml.bind.annotation.XmlSeeAlso;
@@ -30,10 +31,28 @@ public interface ListagemLivros {
      *     returns java.util.List<com.knight.estoque.servicos.Livro>
      */
     @WebMethod
-    @WebResult(targetNamespace = "")
+    @WebResult(name = "livro", targetNamespace = "")
     @RequestWrapper(localName = "listarLivros", targetNamespace = "http://servicos.estoque.knight.com/", className = "com.knight.estoque.servicos.ListarLivros")
     @ResponseWrapper(localName = "listarLivrosResponse", targetNamespace = "http://servicos.estoque.knight.com/", className = "com.knight.estoque.servicos.ListarLivrosResponse")
     @Action(input = "http://servicos.estoque.knight.com/ListagemLivros/listarLivrosRequest", output = "http://servicos.estoque.knight.com/ListagemLivros/listarLivrosResponse")
     public List<Livro> listarLivros();
+
+    /**
+     * 
+     * @param arg1
+     * @param arg0
+     * @return
+     *     returns java.util.List<com.knight.estoque.servicos.Livro>
+     */
+    @WebMethod
+    @WebResult(name = "livro", targetNamespace = "")
+    @RequestWrapper(localName = "listarLivrosPaginacao", targetNamespace = "http://servicos.estoque.knight.com/", className = "com.knight.estoque.servicos.ListarLivrosPaginacao")
+    @ResponseWrapper(localName = "livrosPaginados", targetNamespace = "http://servicos.estoque.knight.com/", className = "com.knight.estoque.servicos.LivrosPaginados")
+    @Action(input = "http://servicos.estoque.knight.com/ListagemLivros/listarLivrosPaginacaoRequest", output = "http://servicos.estoque.knight.com/ListagemLivros/listarLivrosPaginacaoResponse")
+    public List<Livro> listarLivrosPaginacao(
+        @WebParam(name = "arg0", targetNamespace = "")
+        Integer arg0,
+        @WebParam(name = "arg1", targetNamespace = "")
+        Integer arg1);
 
 }

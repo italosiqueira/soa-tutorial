@@ -9,18 +9,14 @@ import com.knight.estoque.servicos.Livro;
 public class Client {
 
 	public static void main(String[] args) {
-		
-		// Inicia a fábrica dos proxies
-		ListagemLivrosService listagemLivrosFactory = new ListagemLivrosService();
-		
-		// Obtém um proxy
-		ListagemLivros listagemLivros = listagemLivrosFactory
+
+		ListagemLivrosService listagemLivrosService = new ListagemLivrosService(
+				Client.class.getResource("/livros.wsdl"));
+		ListagemLivros listagemLivros = listagemLivrosService
 				.getListagemLivrosPort();
-		// Executa o método remoto
-		List<Livro> livros = listagemLivros.listarLivros();
+		List<Livro> livros = listagemLivros.listarLivrosPaginacao(0, 2);
 		for (Livro livro : livros) {
-			System.out.println("Nome: " + livro.getNome());
+			System.out.println("Nome do livro: " + livro.getNome());
 		}
 	}
-
 }

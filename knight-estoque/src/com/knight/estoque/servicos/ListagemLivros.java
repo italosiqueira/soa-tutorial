@@ -3,6 +3,7 @@ package com.knight.estoque.servicos;
 import java.util.List;
 
 import javax.jws.WebMethod;
+import javax.jws.WebParam;
 import javax.jws.WebResult;
 import javax.jws.WebService;
 import javax.xml.ws.Endpoint;
@@ -11,6 +12,7 @@ import javax.xml.ws.ResponseWrapper;
 
 import com.knight.estoque.daos.LivroDAO;
 import com.knight.estoque.modelos.Livro;
+import com.knight.estoque.modelos.Usuario;
 
 @WebService
 public class ListagemLivros {
@@ -30,6 +32,10 @@ public class ListagemLivros {
 		LivroDAO livroDAO = obterDAO();
 
 		return livroDAO.listarLivros(numeroDaPagina, tamanhoDaPagina);
+	}
+	
+	public void criarLivro(@WebParam(name="livro") Livro livro, @WebParam(name="usuario", header=true) Usuario ususario) throws UsuarioNaoAutorizadoException {
+		
 	}
 
 	private LivroDAO obterDAO() {

@@ -104,8 +104,8 @@
    <soapenv:Header/>\r
    <soapenv:Body>\r
       <ser:listarLivrosPaginacao>\r
-         <arg0>1</arg0>\r
-         <arg1>5</arg1>\r
+         <arg0>0</arg0>\r
+         <arg1>1</arg1>\r
       </ser:listarLivrosPaginacao>\r
    </soapenv:Body>\r
 </soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://servicos.estoque.knight.com/ListagemLivros/listarLivrosPaginacaoRequest"/><con:wsrmConfig version="1.2"/></con:call></con:operation></con:interface><con:properties/><con:wssContainer/><con:oAuth2ProfileContainer/></con:soapui-project>

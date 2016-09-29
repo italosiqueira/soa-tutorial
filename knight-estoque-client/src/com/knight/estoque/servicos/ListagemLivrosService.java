@@ -17,7 +17,7 @@ import javax.xml.ws.WebServiceFeature;
  * Generated source version: 2.2
  * 
  */
-@WebServiceClient(name = "ListagemLivrosService", targetNamespace = "http://servicos.estoque.knight.com/", wsdlLocation = "http://localhost:8080/livros?wsdl")
+@WebServiceClient(name = "ListagemLivrosService", targetNamespace = "http://servicos.estoque.knight.com/", wsdlLocation = "file:/C:/Users/italo_000/git/soa-tutorial/knight-estoque-client/resources/livros.wsdl")
 public class ListagemLivrosService
     extends Service
 {
@@ -30,7 +30,7 @@ public class ListagemLivrosService
         URL url = null;
         WebServiceException e = null;
         try {
-            url = new URL("http://localhost:8080/livros?wsdl");
+            url = new URL("file:/C:/Users/italo_000/git/soa-tutorial/knight-estoque-client/resources/livros.wsdl");
         } catch (MalformedURLException ex) {
             e = new WebServiceException(ex);
         }
