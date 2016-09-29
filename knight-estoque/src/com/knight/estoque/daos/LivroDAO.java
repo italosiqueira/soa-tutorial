@@ -38,4 +38,10 @@ public class LivroDAO {
 		return livro2;
 	}
 
+	public List<Livro> listarLivros(Integer numeroDaPagina,
+			Integer tamanhoDaPagina) {
+		// TODO Auto-generated method stub
+		return this.listarLivros();
+	}
+
 }
