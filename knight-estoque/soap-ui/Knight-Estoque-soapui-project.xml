@@ -13,15 +13,34 @@
   <message name="listarLivrosResponse">
     <part name="parameters" element="tns:listarLivrosResponse"/>
   </message>
+  <message name="listarLivrosPaginacao">
+    <part name="parameters" element="tns:listarLivrosPaginacao"/>
+  </message>
+  <message name="listarLivrosPaginacaoResponse">
+    <part name="parameters" element="tns:livrosPaginados"/>
+  </message>
   <portType name="ListagemLivros">
     <operation name="listarLivros">
       <input wsam:Action="http://servicos.estoque.knight.com/ListagemLivros/listarLivrosRequest" message="tns:listarLivros"/>
       <output wsam:Action="http://servicos.estoque.knight.com/ListagemLivros/listarLivrosResponse" message="tns:listarLivrosResponse"/>
     </operation>
+    <operation name="listarLivrosPaginacao">
+      <input wsam:Action="http://servicos.estoque.knight.com/ListagemLivros/listarLivrosPaginacaoRequest" message="tns:listarLivrosPaginacao"/>
+      <output wsam:Action="http://servicos.estoque.knight.com/ListagemLivros/listarLivrosPaginacaoResponse" message="tns:listarLivrosPaginacaoResponse"/>
+    </operation>
   </portType>
   <binding name="ListagemLivrosPortBinding" type="tns:ListagemLivros">
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
     <operation name="listarLivros">
+      <soap:operation soapAction=""/>
+      <input>
+        <soap:body use="literal"/>
+      </input>
+      <output>
+        <soap:body use="literal"/>
+      </output>
+    </operation>
+    <operation name="listarLivrosPaginacao">
       <soap:operation soapAction=""/>
       <input>
         <soap:body use="literal"/>
@@ -39,22 +58,41 @@
 </definitions>]]></con:content><con:type>http://schemas.xmlsoap.org/wsdl/</con:type></con:part><con:part><con:url>http://localhost:8080/livros?xsd=1</con:url><con:content><![CDATA[<!--Published by JAX-WS RI at http://jax-ws.dev.java.net. RI's version is JAX-WS RI 2.2.4-b01.-->
 <xs:schema version="1.0" targetNamespace="http://servicos.estoque.knight.com/" xmlns:tns="http://servicos.estoque.knight.com/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
   <xs:element name="listarLivros" type="tns:listarLivros"/>
+  <xs:element name="listarLivrosPaginacao" type="tns:listarLivrosPaginacao"/>
   <xs:element name="listarLivrosResponse" type="tns:listarLivrosResponse"/>
+  <xs:element name="livrosPaginados" type="tns:livrosPaginados"/>
+  <xs:complexType name="listarLivrosPaginacao">
+    <xs:sequence>
+      <xs:element name="arg0" type="xs:int" minOccurs="0"/>
+      <xs:element name="arg1" type="xs:int" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="livrosPaginados">
+    <xs:sequence>
+      <xs:element name="livro" type="tns:livro" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="livro">
+    <xs:sequence>
+      <xs:element name="nome" type="xs:string" minOccurs="0"/>
+      <xs:element name="autores" minOccurs="0">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="autor" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="editora" type="xs:string" minOccurs="0"/>
+      <xs:element name="anoDePublicacao" type="xs:int" minOccurs="0"/>
+      <xs:element name="resumo" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
   <xs:complexType name="listarLivros">
     <xs:sequence/>
   </xs:complexType>
   <xs:complexType name="listarLivrosResponse">
     <xs:sequence>
-      <xs:element name="return" type="tns:livro" minOccurs="0" maxOccurs="unbounded"/>
-    </xs:sequence>
-  </xs:complexType>
-  <xs:complexType name="livro">
-    <xs:sequence>
-      <xs:element name="anoDePublicacao" type="xs:int" minOccurs="0"/>
-      <xs:element name="autores" type="xs:string" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
-      <xs:element name="editora" type="xs:string" minOccurs="0"/>
-      <xs:element name="nome" type="xs:string" minOccurs="0"/>
-      <xs:element name="resumo" type="xs:string" minOccurs="0"/>
+      <xs:element name="livro" type="tns:livro" minOccurs="0" maxOccurs="unbounded"/>
     </xs:sequence>
   </xs:complexType>
 </xs:schema>]]></con:content><con:type>http://www.w3.org/2001/XMLSchema</con:type></con:part></con:definitionCache><con:endpoints><con:endpoint>http://localhost:8080/livros</con:endpoint></con:endpoints><con:operation id="07b9fd53-024f-4f12-abfd-79093015c5bb" isOneWay="false" action="" name="listarLivros" bindingOperationName="listarLivros" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="a1016ba6-65e1-49b8-9b3b-ff0d085b7f89" name="listarLivros"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/livros</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ser="http://servicos.estoque.knight.com/">\r
@@ -62,4 +100,12 @@
    <soapenv:Body>\r
       <ser:listarLivros/>\r
    </soapenv:Body>\r
-</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://servicos.estoque.knight.com/ListagemLivros/listarLivrosRequest"/><con:wsrmConfig version="1.2"/></con:call></con:operation></con:interface><con:properties/><con:wssContainer/><con:oAuth2ProfileContainer/></con:soapui-project>
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://servicos.estoque.knight.com/ListagemLivros/listarLivrosRequest"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation id="64b7a032-b1e0-4c92-9134-5ca6cb8f13e5" isOneWay="false" action="" name="listarLivrosPaginacao" bindingOperationName="listarLivrosPaginacao" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="55109614-69cd-4bfc-be43-525c768fa94c" name="listarLivrosPaginacao"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/livros</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ser="http://servicos.estoque.knight.com/">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <ser:listarLivrosPaginacao>\r
+         <arg0>1</arg0>\r
+         <arg1>5</arg1>\r
+      </ser:listarLivrosPaginacao>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://servicos.estoque.knight.com/ListagemLivros/listarLivrosPaginacaoRequest"/><con:wsrmConfig version="1.2"/></con:call></con:operation></con:interface><con:properties/><con:wssContainer/><con:oAuth2ProfileContainer/></con:soapui-project>
