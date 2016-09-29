@@ -2,6 +2,7 @@ package com.knight.estoque.servicos;
 
 import java.util.List;
 
+import javax.jws.WebResult;
 import javax.jws.WebService;
 import javax.xml.ws.Endpoint;
 
@@ -10,7 +11,8 @@ import com.knight.estoque.modelos.Livro;
 
 @WebService
 public class ListagemLivros {
-
+	
+	@WebResult(name="livro")
 	public List<Livro> listarLivros() {
 		LivroDAO livroDAO = obterDAO();
 
