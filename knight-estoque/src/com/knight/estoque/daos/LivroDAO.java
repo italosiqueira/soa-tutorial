@@ -44,4 +44,8 @@ public class LivroDAO {
 		return this.listarLivros();
 	}
 
+	public void criarLivro(Livro livro) {
+		// TODO Auto-generated method stub
+	}
+
 }
