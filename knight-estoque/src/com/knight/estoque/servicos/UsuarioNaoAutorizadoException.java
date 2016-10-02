@@ -1,7 +1,10 @@
 package com.knight.estoque.servicos;
 
+import javax.xml.ws.WebFault;
+
+@WebFault(targetNamespace = "http://servicos.estoque.knight.com/excecoes/", name = "UsuarioNaoAutorizado")
 public class UsuarioNaoAutorizadoException extends Exception {
-	
+
 	private static final long serialVersionUID = -2150236222424028472L;
 
 	public UsuarioNaoAutorizadoException() {
@@ -24,7 +27,5 @@ public class UsuarioNaoAutorizadoException extends Exception {
 	public UsuarioNaoAutorizadoException(Throwable cause) {
 		super(cause);
 	}
-	
-	
 
 }
