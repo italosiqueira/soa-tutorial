@@ -6,12 +6,12 @@ import com.knight.estoque.servicos.ListagemLivros;
 import com.knight.estoque.servicos.ListagemLivrosService;
 import com.knight.estoque.servicos.Livro;
 
-public class Client {
+public class ClientCached {
 
 	public static void main(String[] args) {
 
 		ListagemLivrosService listagemLivrosService = new ListagemLivrosService(
-				Client.class.getResource("/livros.wsdl"));
+				ClientCached.class.getResource("/livros.wsdl"));
 		ListagemLivros listagemLivros = listagemLivrosService
 				.getListagemLivrosPort();
 		List<Livro> livros = listagemLivros.listarLivrosPaginacao(0, 2);

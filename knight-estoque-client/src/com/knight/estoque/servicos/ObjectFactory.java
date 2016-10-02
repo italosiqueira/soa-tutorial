@@ -27,7 +27,11 @@ public class ObjectFactory {
     private final static QName _ListarLivrosPaginacao_QNAME = new QName("http://servicos.estoque.knight.com/", "listarLivrosPaginacao");
     private final static QName _ListarLivros_QNAME = new QName("http://servicos.estoque.knight.com/", "listarLivros");
     private final static QName _LivrosPaginados_QNAME = new QName("http://servicos.estoque.knight.com/", "livrosPaginados");
+    private final static QName _Usuario_QNAME = new QName("http://servicos.estoque.knight.com/", "usuario");
+    private final static QName _CriarLivro_QNAME = new QName("http://servicos.estoque.knight.com/", "criarLivro");
+    private final static QName _UsuarioNaoAutorizadoException_QNAME = new QName("http://servicos.estoque.knight.com/", "UsuarioNaoAutorizadoException");
     private final static QName _ListarLivrosResponse_QNAME = new QName("http://servicos.estoque.knight.com/", "listarLivrosResponse");
+    private final static QName _CriarLivroResponse_QNAME = new QName("http://servicos.estoque.knight.com/", "criarLivroResponse");
 
     /**
      * Create a new ObjectFactory that can be used to create new instances of schema derived classes for package: com.knight.estoque.servicos
@@ -42,6 +46,22 @@ public class ObjectFactory {
      */
     public Livro createLivro() {
         return new Livro();
+    }
+
+    /**
+     * Create an instance of {@link CriarLivroResponse }
+     * 
+     */
+    public CriarLivroResponse createCriarLivroResponse() {
+        return new CriarLivroResponse();
+    }
+
+    /**
+     * Create an instance of {@link UsuarioNaoAutorizadoException }
+     * 
+     */
+    public UsuarioNaoAutorizadoException createUsuarioNaoAutorizadoException() {
+        return new UsuarioNaoAutorizadoException();
     }
 
     /**
@@ -66,6 +86,22 @@ public class ObjectFactory {
      */
     public LivrosPaginados createLivrosPaginados() {
         return new LivrosPaginados();
+    }
+
+    /**
+     * Create an instance of {@link Usuario }
+     * 
+     */
+    public Usuario createUsuario() {
+        return new Usuario();
+    }
+
+    /**
+     * Create an instance of {@link CriarLivro }
+     * 
+     */
+    public CriarLivro createCriarLivro() {
+        return new CriarLivro();
     }
 
     /**
@@ -112,12 +148,48 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link Usuario }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://servicos.estoque.knight.com/", name = "usuario")
+    public JAXBElement<Usuario> createUsuario(Usuario value) {
+        return new JAXBElement<Usuario>(_Usuario_QNAME, Usuario.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link CriarLivro }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://servicos.estoque.knight.com/", name = "criarLivro")
+    public JAXBElement<CriarLivro> createCriarLivro(CriarLivro value) {
+        return new JAXBElement<CriarLivro>(_CriarLivro_QNAME, CriarLivro.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link UsuarioNaoAutorizadoException }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://servicos.estoque.knight.com/", name = "UsuarioNaoAutorizadoException")
+    public JAXBElement<UsuarioNaoAutorizadoException> createUsuarioNaoAutorizadoException(UsuarioNaoAutorizadoException value) {
+        return new JAXBElement<UsuarioNaoAutorizadoException>(_UsuarioNaoAutorizadoException_QNAME, UsuarioNaoAutorizadoException.class, null, value);
+    }
+
+    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link ListarLivrosResponse }{@code >}}
      * 
      */
     @XmlElementDecl(namespace = "http://servicos.estoque.knight.com/", name = "listarLivrosResponse")
     public JAXBElement<ListarLivrosResponse> createListarLivrosResponse(ListarLivrosResponse value) {
         return new JAXBElement<ListarLivrosResponse>(_ListarLivrosResponse_QNAME, ListarLivrosResponse.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link CriarLivroResponse }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://servicos.estoque.knight.com/", name = "criarLivroResponse")
+    public JAXBElement<CriarLivroResponse> createCriarLivroResponse(CriarLivroResponse value) {
+        return new JAXBElement<CriarLivroResponse>(_CriarLivroResponse_QNAME, CriarLivroResponse.class, null, value);
     }
 
 }

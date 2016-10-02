@@ -6,8 +6,10 @@ import javax.jws.WebMethod;
 import javax.jws.WebParam;
 import javax.jws.WebResult;
 import javax.jws.WebService;
+import javax.jws.soap.SOAPBinding;
 import javax.xml.bind.annotation.XmlSeeAlso;
 import javax.xml.ws.Action;
+import javax.xml.ws.FaultAction;
 import javax.xml.ws.RequestWrapper;
 import javax.xml.ws.ResponseWrapper;
 
@@ -27,18 +29,6 @@ public interface ListagemLivros {
 
     /**
      * 
-     * @return
-     *     returns java.util.List<com.knight.estoque.servicos.Livro>
-     */
-    @WebMethod
-    @WebResult(name = "livro", targetNamespace = "")
-    @RequestWrapper(localName = "listarLivros", targetNamespace = "http://servicos.estoque.knight.com/", className = "com.knight.estoque.servicos.ListarLivros")
-    @ResponseWrapper(localName = "listarLivrosResponse", targetNamespace = "http://servicos.estoque.knight.com/", className = "com.knight.estoque.servicos.ListarLivrosResponse")
-    @Action(input = "http://servicos.estoque.knight.com/ListagemLivros/listarLivrosRequest", output = "http://servicos.estoque.knight.com/ListagemLivros/listarLivrosResponse")
-    public List<Livro> listarLivros();
-
-    /**
-     * 
      * @param arg1
      * @param arg0
      * @return
@@ -54,5 +44,39 @@ public interface ListagemLivros {
         Integer arg0,
         @WebParam(name = "arg1", targetNamespace = "")
         Integer arg1);
+
+    /**
+     * 
+     * @return
+     *     returns java.util.List<com.knight.estoque.servicos.Livro>
+     */
+    @WebMethod
+    @WebResult(name = "livro", targetNamespace = "")
+    @RequestWrapper(localName = "listarLivros", targetNamespace = "http://servicos.estoque.knight.com/", className = "com.knight.estoque.servicos.ListarLivros")
+    @ResponseWrapper(localName = "listarLivrosResponse", targetNamespace = "http://servicos.estoque.knight.com/", className = "com.knight.estoque.servicos.ListarLivrosResponse")
+    @Action(input = "http://servicos.estoque.knight.com/ListagemLivros/listarLivrosRequest", output = "http://servicos.estoque.knight.com/ListagemLivros/listarLivrosResponse")
+    public List<Livro> listarLivros();
+
+    /**
+     * 
+     * @param usuario
+     * @param parameters
+     * @return
+     *     returns com.knight.estoque.servicos.CriarLivroResponse
+     * @throws UsuarioNaoAutorizadoException_Exception
+     */
+    @WebMethod
+    @WebResult(name = "criarLivroResponse", targetNamespace = "http://servicos.estoque.knight.com/", partName = "result")
+    @SOAPBinding(parameterStyle = SOAPBinding.ParameterStyle.BARE)
+    @Action(input = "http://servicos.estoque.knight.com/ListagemLivros/criarLivroRequest", output = "http://servicos.estoque.knight.com/ListagemLivros/criarLivroResponse", fault = {
+        @FaultAction(className = UsuarioNaoAutorizadoException_Exception.class, value = "http://servicos.estoque.knight.com/ListagemLivros/criarLivro/Fault/UsuarioNaoAutorizadoException")
+    })
+    public CriarLivroResponse criarLivro(
+        @WebParam(name = "criarLivro", targetNamespace = "http://servicos.estoque.knight.com/", partName = "parameters")
+        CriarLivro parameters,
+        @WebParam(name = "usuario", targetNamespace = "http://servicos.estoque.knight.com/", header = true, partName = "usuario")
+        Usuario usuario)
+        throws UsuarioNaoAutorizadoException_Exception
+    ;
 
 }
