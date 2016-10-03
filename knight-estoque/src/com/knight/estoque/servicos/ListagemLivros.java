@@ -6,10 +6,15 @@ import javax.jws.WebMethod;
 import javax.jws.WebParam;
 import javax.jws.WebResult;
 import javax.jws.WebService;
+import javax.xml.namespace.QName;
+import javax.xml.soap.SOAPConstants;
 import javax.xml.soap.SOAPException;
+import javax.xml.soap.SOAPFactory;
+import javax.xml.soap.SOAPFault;
 import javax.xml.ws.Endpoint;
 import javax.xml.ws.RequestWrapper;
 import javax.xml.ws.ResponseWrapper;
+import javax.xml.ws.soap.SOAPFaultException;
 
 import com.knight.estoque.daos.LivroDAO;
 import com.knight.estoque.modelos.Livro;
@@ -39,10 +44,22 @@ public class ListagemLivros {
 	public void criarLivro(@WebParam(name = "livro") Livro livro,
 			@WebParam(name = "usuario", header = true) Usuario usuario)
 			throws UsuarioNaoAutorizadoException, SOAPException {
-		if (usuario.getLogin().equals("soa") && usuario.getSenha().equals("soa")) {
+		if (usuario.getLogin().equals("soa")
+				&& usuario.getSenha().equals("soa")) {
 			obterDAO().criarLivro(livro);
 		} else {
-			throw new UsuarioNaoAutorizadoException("Não autorizado");
+			 throw new UsuarioNaoAutorizadoException("Não autorizado");
+
+			// Alternative exception action. Recommended when one wishes to address
+			 // net traffic volume, since it allows more control over what will be sent.
+			/*SOAPFault soapFault = SOAPFactory.newInstance().createFault(
+					"Não autorizado",
+					new QName(SOAPConstants.URI_NS_SOAP_1_1_ENVELOPE,
+							"Client.autorizacao"));
+			
+			soapFault.setFaultActor("http://servicos.estoque.knight.com/LivrosService");
+			
+			throw new SOAPFaultException(soapFault);*/
 		}
 	}
 

@@ -162,15 +162,15 @@
          <arg1>?</arg1>\r
       </ser:listarLivrosPaginacao>\r
    </soapenv:Body>\r
-</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://servicos.estoque.knight.com/ListagemLivros/listarLivrosPaginacaoRequest"/></con:call></con:operation><con:operation id="a8e7124c-ec89-41ec-aa76-b4da75a18384" isOneWay="false" action="" name="criarLivro" bindingOperationName="criarLivro" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="bf2b27f9-73ca-47dc-8d62-73df148a8886" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/livros</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ser="http://servicos.estoque.knight.com/">\r
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://servicos.estoque.knight.com/ListagemLivros/listarLivrosPaginacaoRequest"/></con:call></con:operation><con:operation id="a8e7124c-ec89-41ec-aa76-b4da75a18384" isOneWay="false" action="" name="criarLivro" bindingOperationName="criarLivro" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="bf2b27f9-73ca-47dc-8d62-73df148a8886" name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/livros</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ser="http://servicos.estoque.knight.com/">\r
    <soapenv:Header>\r
       <ser:usuario>\r
          <!--Optional:-->\r
-         <login>?</login>\r
+         <login>italo</login>\r
          <!--Optional:-->\r
-         <nome>?</nome>\r
+         <nome>Italo Siqueira Lima</nome>\r
          <!--Optional:-->\r
-         <senha>?</senha>\r
+         <senha>soa</senha>\r
       </ser:usuario>\r
    </soapenv:Header>\r
    <soapenv:Body>\r
@@ -178,18 +178,18 @@
          <!--Optional:-->\r
          <livro>\r
             <!--Optional:-->\r
-            <nome>?</nome>\r
+            <nome>SOA Aplicado: Integrando com web services e além</nome>\r
             <!--Optional:-->\r
             <autores>\r
                <!--Zero or more repetitions:-->\r
-               <autor>?</autor>\r
+               <autor>Alexandre Saudate</autor>\r
             </autores>\r
             <!--Optional:-->\r
-            <editora>?</editora>\r
+            <editora>Casa do Còdigo</editora>\r
             <!--Optional:-->\r
-            <anoDePublicacao>?</anoDePublicacao>\r
+            <anoDePublicacao>2012</anoDePublicacao>\r
             <!--Optional:-->\r
-            <resumo>?</resumo>\r
+            <resumo>Aprenda a usar SOA para integrar suas aplicações</resumo>\r
          </livro>\r
       </ser:criarLivro>\r
    </soapenv:Body>\r
