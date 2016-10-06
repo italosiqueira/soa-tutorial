@@ -4,18 +4,28 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import com.knight.estoque.modelos.EBook;
 import com.knight.estoque.modelos.Livro;
 
 public class LivroDAO {
 
 	public List<Livro> listarLivros() {
-		
+
 		List<Livro> livros = new ArrayList<Livro>();
-		
+
 		livros.add(getLivroGuiaDoProgramador());
 		livros.add(getLivroRubyOnRails());
-		
+		livros.add(getEBookSoaAplicado());
+
 		return livros;
+	}
+
+	private Livro getEBookSoaAplicado() {
+		EBook ebook = new EBook(
+				"SOA Aplicado Integrando com web services e além",
+				Arrays.asList("Alexandre Saudate"), "Casa do Código", 2012,
+				"...");
+		return ebook;
 	}
 
 	private Livro getLivroGuiaDoProgramador() {

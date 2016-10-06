@@ -7,8 +7,10 @@ import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlElementWrapper;
+import javax.xml.bind.annotation.XmlSeeAlso;
 
 @XmlAccessorType(XmlAccessType.FIELD)
+@XmlSeeAlso({ EBook.class })
 public class Livro {
 
 	private String nome;
@@ -29,6 +31,20 @@ public class Livro {
 	 * @XmlJavaTypeAdapter(AdaptadorDate.class)
 	 */
 	private Date dataDeCriacao = new Date();
+	
+	public Livro() {
+		
+	}
+
+	public Livro(String nome, List<String> autores, String editora,
+			Integer anoDePublicacao, String resumo) {
+		super();
+		this.nome = nome;
+		this.autores = autores;
+		this.editora = editora;
+		this.anoDePublicacao = anoDePublicacao;
+		this.resumo = resumo;
+	}
 
 	public String getNome() {
 		return nome;
