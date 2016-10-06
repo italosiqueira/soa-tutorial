@@ -45,16 +45,20 @@ public class ListagemLivros {
 		} else {
 			 throw new UsuarioNaoAutorizadoException("Não autorizado");
 
-			// Alternative exception action. Recommended when one wishes to address
-			 // net traffic volume, since it allows more control over what will be sent.
-			/*SOAPFault soapFault = SOAPFactory.newInstance().createFault(
-					"Não autorizado",
-					new QName(SOAPConstants.URI_NS_SOAP_1_1_ENVELOPE,
-							"Client.autorizacao"));
-			
-			soapFault.setFaultActor("http://servicos.estoque.knight.com/LivrosService");
-			
-			throw new SOAPFaultException(soapFault);*/
+			/*
+			 * Alternative exception action. Recommended when one wishes to address
+			 * net traffic volume, since it allows more control over what will be sent, 
+			 * or have more control over SOAP Exceptions.
+			 * 
+			 * SOAPFault soapFault = SOAPFactory.newInstance().createFault(
+			 * 					"Não autorizado",
+			 * 					new QName(SOAPConstants.URI_NS_SOAP_1_1_ENVELOPE,
+			 * 							"Client.autorizacao"));
+			 * 			
+			 * soapFault.setFaultActor("http://servicos.estoque.knight.com/LivrosService");
+			 * 			
+			 * throw new SOAPFaultException(soapFault);
+			 */
 		}
 	}
 

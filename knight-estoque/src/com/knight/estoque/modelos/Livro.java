@@ -1,5 +1,6 @@
 package com.knight.estoque.modelos;
 
+import java.util.Date;
 import java.util.List;
 
 import javax.xml.bind.annotation.XmlAccessType;
@@ -21,6 +22,13 @@ public class Livro {
 	private Integer anoDePublicacao;
 
 	private String resumo;
+	
+	/*
+	 * This is a class level adapter configuration, used on class attributes:
+	 * 
+	 * @XmlJavaTypeAdapter(AdaptadorDate.class)
+	 */
+	private Date dataDeCriacao = new Date();
 
 	public String getNome() {
 		return nome;

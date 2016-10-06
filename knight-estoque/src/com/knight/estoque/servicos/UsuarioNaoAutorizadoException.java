@@ -53,14 +53,14 @@ public class UsuarioNaoAutorizadoException extends Exception {
 			
 		}
 		
-		public UsuarioFaultInfo(String messagem) {
+		public UsuarioFaultInfo(String mensagem) {
 			super();
-			this.mensagem = messagem;
+			this.mensagem = mensagem;
 			
 			try {
 				this.data = DatatypeFactory.newInstance().newXMLGregorianCalendar(new GregorianCalendar());
 				this.data.setMillisecond(DatatypeConstants.FIELD_UNDEFINED);
-				this.data.setSecond(DatatypeConstants.FIELD_UNDEFINED);
+				this.data.setTimezone(DatatypeConstants.FIELD_UNDEFINED);
 			} catch (DatatypeConfigurationException e) {
 				throw new RuntimeException(e);
 			}
