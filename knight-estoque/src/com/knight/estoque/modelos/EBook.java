@@ -10,7 +10,7 @@ public class EBook extends Livro {
 		super();
 	}
 
-	public EBook(String nome, List<String> autores, String editora,
+	public EBook(String nome, List<Autor> autores, String editora,
 			Integer anoDePublicacao, String resumo) {
 		super(nome, autores, editora, anoDePublicacao, resumo);
 	}
