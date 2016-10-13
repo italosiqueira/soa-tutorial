@@ -2,6 +2,7 @@ package com.knight.estoque.daos;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 
@@ -25,15 +26,16 @@ public class LivroDAO {
 	private Livro getEBookSoaAplicado() {
 		EBook ebook = new EBook(
 				"SOA Aplicado Integrando com web services e além",
-				Arrays.asList(new Autor("Alexandre Saudate", new Date()))
-				, "Casa do Código", 2012,"...");
+				Arrays.asList(new Autor("Alexandre Saudate", new Date())),
+				"Casa do Código", 2012, "...");
 		return ebook;
 	}
 
 	private Livro getLivroGuiaDoProgramador() {
 		Livro livro = new Livro();
 		livro.setAnoDePublicacao(2012);
-		livro.setAutores(Arrays.asList(new Autor("Paulo Silveira", new Date()), new Autor("Adriano Almeida", new Date())));
+		livro.setAutores(Arrays.asList(new Autor("Paulo Silveira", new Date()),
+				new Autor("Adriano Almeida", new Date())));
 		livro.setEditora("Casa do Código");
 		livro.setNome("Guia do Programador");
 		livro.setResumo("Vá do \"nunca programei\" a ...");
@@ -43,7 +45,8 @@ public class LivroDAO {
 	private Livro getLivroRubyOnRails() {
 		Livro livro2 = new Livro();
 		livro2.setAnoDePublicacao(2012);
-		livro2.setAutores(Arrays.asList(new Autor("Vinícius Baggio Fuentes", new Date())));
+		livro2.setAutores(Arrays.asList(new Autor("Vinícius Baggio Fuentes",
+				new Date())));
 		livro2.setEditora("Casa do Código");
 		livro2.setNome("Ruby On Rails");
 		livro2.setResumo("Crie rapidamente aplicações web");
@@ -52,8 +55,18 @@ public class LivroDAO {
 
 	public List<Livro> listarLivros(Integer numeroDaPagina,
 			Integer tamanhoDaPagina) {
-		// TODO Auto-generated method stub
-		return this.listarLivros();
+
+		List<Livro> livros = this.listarLivros();
+
+		int inicio = (numeroDaPagina - 1) * tamanhoDaPagina;
+		int fim = numeroDaPagina * tamanhoDaPagina > livros.size() ? livros
+				.size() : numeroDaPagina * tamanhoDaPagina;
+
+		if (inicio >= livros.size() || inicio < 0 || fim <= inicio) {
+			return Collections.emptyList();
+		}
+
+		return livros.subList(inicio, fim);
 	}
 
 	public void criarLivro(Livro livro) {
