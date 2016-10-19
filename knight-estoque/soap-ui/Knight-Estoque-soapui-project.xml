@@ -184,28 +184,28 @@
       <xs:enumeration value="epub"/>
     </xs:restriction>
   </xs:simpleType>
-</xs:schema>]]></con:content><con:type>http://www.w3.org/2001/XMLSchema</con:type></con:part></con:definitionCache><con:endpoints><con:endpoint>http://localhost:8080/autores</con:endpoint><con:endpoint>http://localhost:8080/livros</con:endpoint></con:endpoints><con:operation id="07b9fd53-024f-4f12-abfd-79093015c5bb" isOneWay="false" action="" name="listarLivros" bindingOperationName="listarLivros" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="1d235733-fa49-42fc-a92a-7d776d8fd7c4" name="listarLivros"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/livros</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ser="http://servicos.estoque.knight.com/">\r
+</xs:schema>]]></con:content><con:type>http://www.w3.org/2001/XMLSchema</con:type></con:part></con:definitionCache><con:endpoints><con:endpoint>http://localhost:8080/autores</con:endpoint><con:endpoint>http://localhost:8080/knight-estoque/LivrosService</con:endpoint></con:endpoints><con:operation id="07b9fd53-024f-4f12-abfd-79093015c5bb" isOneWay="false" action="" name="listarLivros" bindingOperationName="listarLivros" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="1d235733-fa49-42fc-a92a-7d776d8fd7c4" name="listarLivros"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/knight-estoque/LivrosService</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ser="http://servicos.estoque.knight.com/">\r
    <soapenv:Header/>\r
    <soapenv:Body>\r
       <ser:listarLivros/>\r
    </soapenv:Body>\r
-</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://servicos.estoque.knight.com/ListagemLivros/listarLivrosRequest"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation id="64b7a032-b1e0-4c92-9134-5ca6cb8f13e5" isOneWay="false" action="" name="listarLivrosPaginacao" bindingOperationName="listarLivrosPaginacao" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="014e93e7-8101-4f2d-99ce-90324365e2f5" name="listarLivrosPaginacao"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/livros</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ser="http://servicos.estoque.knight.com/">\r
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://servicos.estoque.knight.com/ListagemLivros/listarLivrosRequest"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation id="64b7a032-b1e0-4c92-9134-5ca6cb8f13e5" isOneWay="false" action="" name="listarLivrosPaginacao" bindingOperationName="listarLivrosPaginacao" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="014e93e7-8101-4f2d-99ce-90324365e2f5" name="listarLivrosPaginacao"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/knight-estoque/LivrosService</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ser="http://servicos.estoque.knight.com/">\r
    <soapenv:Header/>\r
    <soapenv:Body>\r
       <ser:listarLivrosPaginacao>\r
          <!--Optional:-->\r
-         <arg0>2</arg0>\r
+         <arg0>0</arg0>\r
          <!--Optional:-->\r
-         <arg1>3</arg1>\r
+         <arg1>1</arg1>\r
       </ser:listarLivrosPaginacao>\r
    </soapenv:Body>\r
-</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://servicos.estoque.knight.com/ListagemLivros/listarLivrosPaginacaoRequest"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation id="a8e7124c-ec89-41ec-aa76-b4da75a18384" isOneWay="false" action="" name="criarLivro" bindingOperationName="criarLivro" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="23609f62-48a2-4fc2-b5ac-e6dfec4907b2" name="criarLivro"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/livros</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ser="http://servicos.estoque.knight.com/">\r
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://servicos.estoque.knight.com/ListagemLivros/listarLivrosPaginacaoRequest"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation id="a8e7124c-ec89-41ec-aa76-b4da75a18384" isOneWay="false" action="" name="criarLivro" bindingOperationName="criarLivro" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="23609f62-48a2-4fc2-b5ac-e6dfec4907b2" name="criarLivro"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/knight-estoque/LivrosService</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ser="http://servicos.estoque.knight.com/">\r
    <soapenv:Header>\r
       <ser:usuario>\r
          <!--Optional:-->\r
-         <login>italo</login>\r
+         <login>soa</login>\r
          <!--Optional:-->\r
-         <nome>Italo Siqueira Lima</nome>\r
+         <nome>faultCode</nome>\r
          <!--Optional:-->\r
          <senha>soa</senha>\r
       </ser:usuario>\r
@@ -228,7 +228,7 @@
             <!--Optional:-->\r
             <resumo>...</resumo>\r
             <!--Optional:-->\r
-            <dataDeCriacao>2012-03-01</dataDeCriacao>\r
+            <!--<dataDeCriacao>2012-03-01</dataDeCriacao>\r-->
          </livro>\r
       </ser:criarLivro>\r
    </soapenv:Body>\r
@@ -287,7 +287,7 @@
       <xs:element name="nome" type="xs:string" minOccurs="0"/>
     </xs:sequence>
   </xs:complexType>
-</xs:schema>]]></con:content><con:type>http://www.w3.org/2001/XMLSchema</con:type></con:part></con:definitionCache><con:endpoints><con:endpoint>http://localhost:8080/autores</con:endpoint></con:endpoints><con:operation id="cb675db1-a4b6-4cfc-bbb3-a5df1afcba49" isOneWay="false" action="" name="listarAutores" bindingOperationName="listarAutores" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="ac7ea673-3209-4122-b55f-3889a4e99749" name="listarAutores"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/autores</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ser="http://servicos.estoque.knight.com/">\r
+</xs:schema>]]></con:content><con:type>http://www.w3.org/2001/XMLSchema</con:type></con:part></con:definitionCache><con:endpoints><con:endpoint>	 http://localhost:8080/knight-estoque-0.0.1-SNAPSHOT/AutoresService?ws</con:endpoint></con:endpoints><con:operation id="cb675db1-a4b6-4cfc-bbb3-a5df1afcba49" isOneWay="false" action="" name="listarAutores" bindingOperationName="listarAutores" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="ac7ea673-3209-4122-b55f-3889a4e99749" name="listarAutores"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/knight-estoque/AutoresService</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ser="http://servicos.estoque.knight.com/">\r
    <soapenv:Header/>\r
    <soapenv:Body>\r
       <ser:listarAutores/>\r

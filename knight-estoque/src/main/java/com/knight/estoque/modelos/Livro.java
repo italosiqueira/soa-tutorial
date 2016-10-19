@@ -3,6 +3,12 @@ package com.knight.estoque.modelos;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
@@ -14,15 +20,20 @@ import com.knight.estoque.adaptadores.AdaptadorAutores;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlSeeAlso({ EBook.class })
+@Entity
 public class Livro {
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long id;
 
 	private String nome;
 
 	@XmlElementWrapper(name = "autores")
 	@XmlElement(name = "autor")
 	@XmlJavaTypeAdapter(value = AdaptadorAutores.class)
+	@ManyToMany(cascade = { CascadeType.PERSIST })
 	private List<Autor> autores;
-	// private List<String> autores;
 
 	private String editora;
 
@@ -38,17 +49,25 @@ public class Livro {
 	private Date dataDeCriacao = new Date();
 
 	public Livro() {
-
+		this.dataDeCriacao = new Date();
 	}
 
 	public Livro(String nome, List<Autor> autores, String editora,
 			Integer anoDePublicacao, String resumo) {
-		super();
+		this();
 		this.nome = nome;
 		this.autores = autores;
 		this.editora = editora;
 		this.anoDePublicacao = anoDePublicacao;
 		this.resumo = resumo;
+	}
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
 	}
 
 	public String getNome() {
