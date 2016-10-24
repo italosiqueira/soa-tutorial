@@ -11,7 +11,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlRootElement
 @XmlAccessorType(XmlAccessType.FIELD)
 @Entity
-public class Usuario {
+public class Usuario extends EntidadeModelo {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
