@@ -17,3 +17,9 @@ insert into Livro_Autor (livro_id,autores_id) values (1,1)
 insert into Livro_Autor (livro_id,autores_id) values (1,2)
 
 insert into Livro_Autor (livro_id,autores_id) values (2,3)
+
+insert into Usuario (nome,login,senha) values ('Alexandre','admin','admin');
+insert into Usuario (nome,login,senha) values ('Rafael','rafael','rafael');
+insert into Usuario (nome,login,senha) values ('Paulo','paulo','paulo');
+insert into Usuario (nome,login,senha) values ('Adriano','adriano','adriano');
+insert into Usuario (nome,login,senha) values ('Matheus','matheus','matheus');
