@@ -23,6 +23,7 @@ public abstract class EntidadeModelo {
 	@PreUpdate
 	@PrePersist
 	protected void ajusatarDataAtualizacao() {
+		// TODO Set local Timezone (and Locale?) - with no Daytime Saving
 		this.dataAtualizacao = new Date();
 	}
 	
