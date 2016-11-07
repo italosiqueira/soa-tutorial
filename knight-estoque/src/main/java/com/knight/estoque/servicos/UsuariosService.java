@@ -9,18 +9,6 @@ import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.servlet.http.HttpServletRequest;
-import javax.ws.rs.Consumes;
-import javax.ws.rs.DefaultValue;
-import javax.ws.rs.GET;
-import javax.ws.rs.HeaderParam;
-import javax.ws.rs.POST;
-import javax.ws.rs.PUT;
-import javax.ws.rs.Path;
-import javax.ws.rs.PathParam;
-import javax.ws.rs.Produces;
-import javax.ws.rs.QueryParam;
-import javax.ws.rs.core.Context;
-import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
 import javax.ws.rs.core.UriBuilder;
@@ -31,29 +19,16 @@ import com.knight.estoque.modelos.Usuario;
 import com.knight.estoque.modelos.Usuarios;
 import com.knight.estoque.modelos.rest.Link;
 
-@Path("/usuarios")
-@Produces(MediaType.APPLICATION_XML)
-@Consumes(MediaType.APPLICATION_XML)
 @Stateless
-public class UsuariosService {
-
-	public static final String CAMPO_DESCRICAO_IMAGEM = "Descricao";
-
-	static final String PARAM_INICIO = "inicio";
-
-	static final String PARAM_TAMANHO_PAGINA = "tamanhoPagina";
+public class UsuariosService implements UsuariosServiceInterface {
 
 	@PersistenceContext
 	private EntityManager em;
 
-	@GET
-	public Response listarUsuarios(
-			@HeaderParam("If-Modified-Since") Date modifiedSince,
-			@QueryParam(PARAM_INICIO) @DefaultValue("0") Integer inicio,
-			@QueryParam(PARAM_TAMANHO_PAGINA) @DefaultValue("20") Integer tamanhoPagina,
-			@Context UriInfo uriInfo) {
+	public Response listarUsuarios(Date modifiedSince, Integer inicio,
+			Integer tamanhoPagina, UriInfo uriInfo) {
 
-		//TODO Validate variable values inicio and tamanhoPagina
+		// TODO Validate variable values inicio and tamanhoPagina
 		Collection<Usuario> usuarios = em
 				.createQuery("SELECT u FROM Usuario u", Usuario.class)
 				.setFirstResult(inicio).setMaxResults(tamanhoPagina.intValue())
@@ -168,10 +143,7 @@ public class UsuariosService {
 		return links.toArray(new Link[] {});
 	}
 
-	@GET
-	@Path("/{id}")
-	public Response find(@PathParam("id") Long id,
-			@HeaderParam("If-Modified-Since") Date modifiedSince) {
+	public Response find(Long id, Date modifiedSince) {
 
 		Usuario usuario = em.find(Usuario.class, id);
 
@@ -187,8 +159,7 @@ public class UsuariosService {
 		return Response.status(Status.NOT_FOUND).build();
 	}
 
-	@POST
-	public Response create(@Context UriInfo uriInfo, Usuario usuario) {
+	public Response create(UriInfo uriInfo, Usuario usuario) {
 		em.persist(usuario);
 		UriBuilder uriBuilder = uriInfo.getAbsolutePathBuilder();
 		URI location = uriBuilder.path("/{id}").build(usuario.getId());
@@ -196,11 +167,7 @@ public class UsuariosService {
 		return Response.created(location).build();
 	}
 
-	@GET
-	@Path("/{id}")
-	@Produces("image/*")
-	public Response recupearImagem(@PathParam("id") Long id,
-			@HeaderParam("If-Modified-Since") Date modifiedSince) {
+	public Response recupearImagem(Long id, Date modifiedSince) {
 
 		Usuario usuario = em.find(Usuario.class, id);
 
@@ -220,12 +187,8 @@ public class UsuariosService {
 		return Response.status(Status.NOT_FOUND).build();
 	}
 
-	@PUT
-	@Path("/{id}")
-	@Consumes("image/*")
-	public Response adicionarImagem(@PathParam("id") Long id,
-			@HeaderParam("Descricao") String descricao,
-			@Context HttpServletRequest httpServletRequest, byte[] dadosImagem) {
+	public Response adicionarImagem(Long id, String descricao,
+			HttpServletRequest httpServletRequest, byte[] dadosImagem) {
 
 		Usuario usuario = em.find(Usuario.class, id);
 
@@ -242,5 +205,30 @@ public class UsuariosService {
 
 		return Response.noContent().build();
 
+	}
+
+	public Response update(Usuario usuario) {
+		usuario = em.merge(usuario);
+		return Response.noContent().build();
+	}
+
+	public Response update(Long id, Usuario usuario) {
+		usuario.setId(id);
+		return update(usuario);
+	}
+
+	public Response delete(Usuario usuario) {
+		usuario = em.find(Usuario.class, usuario.getId());
+		if (usuario == null) {
+			return Response.status(Status.NOT_FOUND).build();
+		}
+		em.remove(usuario);
+		return Response.noContent().build();
+	}
+
+	public Response delete(Long id) {
+		Usuario usuario = new Usuario();
+		usuario.setId(id);
+		return delete(usuario);
 	}
 }
