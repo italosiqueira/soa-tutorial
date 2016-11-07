@@ -24,3 +24,7 @@ insert into Usuario (nome,login,senha, imagem_id, dataAtualizacao) values ('Rafa
 insert into Usuario (nome,login,senha, imagem_id, dataAtualizacao) values ('Paulo','paulo','paulo',null,CURRENT_TIMESTAMP);
 insert into Usuario (nome,login,senha, imagem_id, dataAtualizacao) values ('Adriano','adriano','adriano',null,CURRENT_TIMESTAMP);
 insert into Usuario (nome,login,senha, imagem_id, dataAtualizacao) values ('Matheus','matheus','matheus',null,CURRENT_TIMESTAMP);
+
+
+CREATE table usuario_privilegiado (login char(30), senha char(60));
+insert into usuario_privilegiado (login, senha) values('admin', 'jGl25bVBBBW96Qi9Te4V37Fnqchz/Eu4qB9vKrRIqRg=');
