@@ -16,6 +16,11 @@ public class UsuarioNaoAutorizadoException_Exception
 {
 
     /**
+	 * 
+	 */
+	private static final long serialVersionUID = 8047404360422986038L;
+	
+	/**
      * Java type that goes as soapenv:Fault detail element.
      * 
      */
